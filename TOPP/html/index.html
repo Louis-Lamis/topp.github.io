@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="../custom/lightbox.css">
     <link rel="stylesheet" href="../custom/responsive.css">
 
+	<!--Alert show sweat alert-->
+	<script src="../css/sweetalert2.min.css"></script>
+	
+   
 
     
 	<title>
@@ -20,12 +24,19 @@
 	<link rel="shortcut icon" href="../logo/topp.png" sizes="40x32">
 </head>
 <body>
-   
+   <!--Loading page-->
+<div id="loader">
+	<img src="../logo/PVtR.gif" alt="">
+	<h3 class="lead text-danger p-2 text-shadow mx-3">Page Loading...</h3>
+	<span class="note text-info">Kindly check your internet connectivity</span>
+</div>
 	<!--========= navcbar start here =================-->
-
+<div id="loader_content">
 	<div class="header">
 		<img src="../logo/topp.png" alt="logo topp">
 		<h1 class="lead fw-3">TOPP CHECK POINT</h1>
+		
+		
 	</div>
 
 	<!--========= start End here =================-->
@@ -49,6 +60,8 @@
 
 	</div>
 	<!--sidebar here end-->
+
+	
 	<!--main content-->
 	<div class="content">
 	<div class="container contains">
@@ -66,7 +79,7 @@
 					<option value="100">100</option>
 				</select>
 				<div class="search ">
-					<input type="search" placeholder="search" class="search">
+					<input type="search" placeholder="search" class="search" id="search">
 					<button class="add_new " id="add_new" >
 					<span class="add"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>	
 					<a href="visitors_add_new.html"> Add new</a> 
@@ -89,17 +102,19 @@
 						<th>STATUS</th>
 					</tr>
 					</thead>
-					<tbody>
+					<tbody id="table_body">
 						<tr>
-							<td>0033</td>
-							<td>Louis</td>
-							<td>11/22/22</td>
+							<td>0031</td>
+							<td>Ben</td>
+							<td>11/12/22</td>
 							<td>12:00 Pm</td>
-							<td>Aduabeng</td>
+							<td>Jukwa</td>
 							<td>HR</td>
 							<td>!:30 PM</td>
-							<td><button><i class="fa fa-edit"></i> </button>
-							<button><i class="fa fa-trash" aria-hidden="true"></i></button>
+							<td><button data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+								<i class="fa fa-edit"></i>
+							 </button>
+							<button><i class="fa fa-trash" onclick="deleteFucnction()"aria-hidden="true"></i></button>
 							</td>
 							<td><i class="fa fa-wifi" aria-hidden="true"></i></td>
 						</tr>
@@ -113,7 +128,7 @@
 							<td>HR</td>
 							<td>!:30 PM</td>
 							<td><button><i class="fa fa-edit"></i> </button>
-							<button><i class="fa fa-trash" aria-hidden="true"></i></button>
+							<button name="delete"><i class="fa fa-trash" aria-hidden="true"></i></button>
 							</td>
 							<td><i class="fa fa-wifi" aria-hidden="true"></i></td>
 						</tr>
@@ -354,10 +369,89 @@
 		</h1>
 	</div>
 	<!--========= main content End here =================-->
-   
+   <!--Aproval modal and editing content modal-->
+  
 	
-	
+ <!--Aproval modal and editing content modal ends-->
+  
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h1 class="modal-title fs-5 text-uppercase" id="staticBackdropLabel" style="color: rgb(40, 110, 112);">
+			
+			setting
+			<span><i class="fa fa-sliders text-secondary" aria-hidden="true"></i></span>
+		  </h1>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			<div class="tabs_1">
+				<input type="radio" class="tabs__radio" name="tabs-example" id="tab1" checked>
+				<label for="tab1" class="tabs__label">
+					<h2 class="title_at_page text-primary">
+						EDIT
+					</h2>
+				</label>
+				<div class="tabs__content P-5">
+					<form class="needs-validation">
+						<div class="form-group was-validated mb-3">
+							<label class="form-label" for="name">Enter your name</label>
+							<input class="form-control" type="text" id="name" value="Louis Fobi" disabled>
+						</div>
+						<div class="form-group was-validated mb-3">
+							<label class="form-label" for="name">Tag</label>
+							<input class="form-control" type="text" id="tag" value="0032" disabled>
+						</div>
+						<div class="form-group was-validated mb-3">
+							<label class="form-label" for="name">Where From</label>
+							<input class="form-control" type="text" id="from" value="Aduabeng" disabled>
+						</div>
+						<div class="form-group was-validated mb-3">
+							<label class="form-label" for="name">Destination</label>
+							<input class="form-control" type="text" id="to" value="GM" disabled>
+						</div>
+						
+						<div class="form-group was-validated mb-3">
+							<label class="form-label" for="name">Tel</label>
+							<input class="form-control" type="phone" id="tel" value="0554343921" required>
+						</div>
+						<input class="btn btn-success w-100" type="submit" value="SAVE">
+					</form>
+				</div>
+				<input type="radio" class="tabs__radio" name="tabs-example" id="tab2">
+				<label for="tab2" class="tabs__label">
+					<h2 class="title_at_page text-success">
+						APPROVE
+					</h2>
+				</label>
+				<div class="tabs__content">
+					<div class="login approve">
 
+						
+						
+						<form class="needs-validation" method="post" action="">
+							<div class="form-group was-validated mb-3">
+								<label class="form-label" for="name">Enter your name</label>
+								<input class="form-control" type="text" id="name" required>
+								<div class="invalid-feedback">
+									Please enter your name
+								</div>
+							</div>
+							<input class="btn btn-success w-100" type="submit" id="approve" value="APPROVE" onclick="validate()">
+						</form>
+				
+					</div>
+				</div>
+			  </div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">&times;</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
    </div>
 </body>
 <!-- #javascript bootstrap-->
@@ -365,6 +459,8 @@
 <script src="../mainjs/jquery.js"></script>
 <script src="../mainjs/main.js"></script>
 <script src="../mainjs/lightbox.js"></script>
+<script src="../mainjs/search_jquery.js"></script>
 
-
+<script src="../js/sweetalert2.all.min.js"></script>
+<script src="../js/sweetalert2.min.js"></script>
 </html>

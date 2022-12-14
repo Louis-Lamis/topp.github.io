@@ -357,3 +357,88 @@ input[type="date"]{
   border: #fff;
 }
 
+
+
+/*========loading skeleton modal========*/
+
+#loader_content{
+  display: none;
+}
+
+#loader{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+}
+
+#loader img{
+  width: 200px;
+}
+
+
+/*modal nav tabs ===============*/
+.tabs_1{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  font-family: sans-serif;
+}
+
+.tabs__label {
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.tabs__radio {
+  display: none;
+}
+
+.tabs__content {
+  order: 1;
+  width: 100%;
+  border-bottom: 3px solid #dddddd;
+  line-height: 1.5;
+  font-size: 0.9em;
+  display: none;
+}
+
+.tabs__radio:checked + .tabs__label {
+  font-weight: bold;
+  color: #009578;
+  border-bottom: 2px solid #009578;
+  margin-bottom: 1em;
+}
+
+.tabs__radio:checked + .tabs__label + .tabs__content {
+  display: initial;
+}
+
+.title_at_page{
+  text-align: center;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 24px;
+  letter-spacing: 0.6px;
+  word-spacing: 2.2px;
+  color: #04779a;
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: uppercase;
+  
+}
+
+/*aproval form==============*/
+
+.approve{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/*=============Dark mode---------------=====*/

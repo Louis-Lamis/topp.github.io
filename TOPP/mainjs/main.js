@@ -1,27 +1,5 @@
 
-/*switchable sidebar=================
-
-var tabs = document.querySelectorAll(".sidebar ul li");
-var tab_wraps = document.querySelectorAll(".contains");
-
-tabs.forEach(function(tab, tab_index){
-	tab.addEventListener("click", function(){
-		tabs.forEach(function(tab){
-			tab.classList.remove("active");
-		})
-		tab.classList.add("active");
-
-		tab_wraps.forEach(function(content, content_index){
-			if(content_index == tab_index){
-				content.style.display = "block";
-			}
-			else{
-				content.style.display = "none";
-			}
-		})
-
-	})
-})*/
+/*switchable sidebar=================*/
 
 
 $(document).ready(function(){
@@ -39,7 +17,62 @@ $(document).ready(function(){
         $(this).addClass('active');
         $('.contains').eq(index).show();
     });
+
+
+
 });
+
+
+/*=============Loading page =====*/
+
+window.onload =function(){
+    document.getElementById('loader').style.display='none';
+    document.getElementById('loader_content').style.display='block';
+
+}
+
+/*==============Deletion validation============*/
+function deleteFucnction(){
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            'Deleted!',
+            'Record has been deleted.',
+            'success'
+          )
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Cancelled',
+            'Your imaginary file is safe :)',
+            'error'
+          )
+        }
+      })
+}
+
+
+
+
 
 /*froms js =========*/
 
